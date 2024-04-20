@@ -1,10 +1,23 @@
-import { useState, useEffect } from 'react'
-import { supabase } from 'utils/supabase'
-import { StyleSheet, View, Alert } from 'react-native'
-import { Button, Input } from 'react-native-elements'
-import { Session } from '@supabase/supabase-js'
+import { useState, useEffect } from 'react';
+import { supabase } from 'utils/supabase';
+import { StyleSheet, View, Alert } from 'react-native';
+import { Button, Input } from 'react-native-elements';
+import { Session } from '@supabase/supabase-js';
 
-export default function Account({ session }: { session: Session }) {
+const Account = () => {
+  const [session, setSession] = useState<Session | null>(null)
+  // const Stack = createNativeStackNavigator<RootStackParamsList>();
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+    });
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    });
+  }, []);
+
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState('')
   const [website, setWebsite] = useState('')
@@ -118,3 +131,5 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 })
+
+export default Account;

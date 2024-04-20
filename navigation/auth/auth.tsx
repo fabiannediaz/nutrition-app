@@ -15,7 +15,7 @@ AppState.addEventListener('change', (state) => {
   }
 })
 
-export default function Auth() {
+const Auth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -94,3 +94,5 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 })
+
+export default Auth;
