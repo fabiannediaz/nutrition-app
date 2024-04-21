@@ -1,6 +1,7 @@
 import { useIsFocused } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Session } from "@supabase/supabase-js";
+import { Space, SpinLoading } from "antd-mobile";
 import { useEffect, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import { Button, ListItem, Text } from "react-native-elements";
@@ -162,10 +163,8 @@ const Plan = (props: Props) => {
 
   if (loading) {
     return (
-      <View>
-        <Text>
-          Cargando...
-        </Text>
+      <View style={{ ...styles.container, ...styles.loader }}>
+        <SpinLoading color="primary" />
       </View>
     );
   }
@@ -215,8 +214,14 @@ const Plan = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
     padding: 12,
+    paddingTop: 40,
+    paddingBottom: 40,
+  },
+  loader: {
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   verticallySpaced: {
     paddingTop: 4,

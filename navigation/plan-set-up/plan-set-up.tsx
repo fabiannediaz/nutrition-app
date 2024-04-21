@@ -5,6 +5,7 @@ import { Alert, StyleSheet, View } from "react-native";
 import { Button, Input, Text } from "react-native-elements";
 import { RootStackScreens } from "types";
 import { supabase } from "utils/supabase";
+//import { Slider, Toast } from 'antd-mobile'
 
 type Props = NativeStackScreenProps<RootStackScreens, "PlanSetUp">;
 
@@ -74,6 +75,19 @@ const PlanSetUp = (props: Props) => {
     }
   }
 
+  // const aaaa = (parseFloat(proteins) + parseFloat(carbs) + parseFloat(fats)) / parseFloat(kcal);
+
+  // const toastValue = (value: number | [number, number]) => {
+  //   let text = '';
+  //   if (typeof value === 'number') {
+  //     text = `${value}`;
+  //   } else {
+  //     text = `[${value.join(',')}]`;
+  //   }
+  //   Toast.show(`Valor：${text}`);
+  //   setProteins(text);
+  // }
+
   return (
     <View style={styles.container}>
       <View style={[styles.verticallySpaced, styles.mt20]}>
@@ -87,6 +101,15 @@ const PlanSetUp = (props: Props) => {
       </View>
 
       <View style={styles.verticallySpaced}>
+        {/* <Text>Proteínas</Text>
+        <Slider
+          value={parseFloat(proteins)}
+          max={parseFloat(kcal)}
+          onAfterChange={(text) => {
+            setProteins(text.toString());
+            validateRemainingKcal();
+          }}
+        /> */}
         <Input
           label="Proteínas"
           value={proteins}
